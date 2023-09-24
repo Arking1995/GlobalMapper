@@ -4,7 +4,7 @@ Official Pytorch Implementation of "GlobalMapper: Arbitrary-Shaped Urban Layout 
 [arXiv](https://arxiv.org/abs/2307.09693) | [BibTeX](#bibtex) | [Project Page](https://arking1995.github.io/GlobalMapper/)
 
 This repo contains codes for single GPU training for 
-[GlobalMapper: Arbitrary-Shaped Urban Layout Generation] (https://arxiv.org/pdf/2307.09693.pdf)
+[GlobalMapper: Arbitrary-Shaped Urban Layout Generation](https://arxiv.org/pdf/2307.09693.pdf)
 
 Note that this repo is lack of code comments.
 
