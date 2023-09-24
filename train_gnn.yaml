@@ -1,0 +1,57 @@
+###############################  Training setting   ############################
+gpu_ids : 
+  - 0
+
+clean_cache : False
+save_record : False
+is_multigpu : False
+
+save_epoch : 50
+val_ratio : 0.2
+total_epochs : 1000
+start_epoch : 0
+
+
+###################################   GlobalMapper setting   #######################################
+is_Teaser : False  ### test for full continuous generation
+is_conditional_block : False
+is_input_road: True
+encode_cnn : True
+is_blockplanner : False
+
+attten_net : 
+  - 'TransformerConv'
+  - 'GATConv'
+  - 'SAGEConv'
+
+convlayer : 'GATConv' #'ResGatedGraphConv' #'SuperGATConv' #'GATv2Conv' # 'GPSConv'   #'GCNConv' #'NaiveMsgPass'  #'TransformerConv'  #'GATConv'  #'SAGEConv'    #'NaiveMsgPass'  #'SAGEConv'
+aggr : 'Max'  # 'Mean'
+lr : 0.001
+n_ft_dim : 256
+block_latent_dim : 20
+head_num : 12  # only for GAT
+batch_size : 200
+latent_dim: 512
+template_width : 30
+template_height : 4
+
+
+################################    weight setting  #########################################################
+exist_weight : 3.0
+pos_weight : 4.0
+kld_weight : 0.5
+size_weight : 4.0
+extsum_weight : 2.0
+shape_weight : 0.05
+iou_weight : 1.0
+height_weight : 4.0
+
+
+
+
+####################################     resume setting     #####################################################
+resume : False
+resume_dir : 'Your resume folder'
+import_name : 'latest'
+resume_epoch : 400
+
