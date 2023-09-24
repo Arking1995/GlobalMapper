@@ -6,7 +6,7 @@ Official Pytorch Implementation of "GlobalMapper: Arbitrary-Shaped Urban Layout 
 This repo contains codes for single GPU training for 
 [GlobalMapper: Arbitrary-Shaped Urban Layout Generation](https://arxiv.org/pdf/2307.09693.pdf)
 
-Note that this repo is lack of code comments.
+**Note that this repo is lack of code comments.**
 
 
 ## Environment
