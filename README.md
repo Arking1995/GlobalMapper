@@ -20,7 +20,9 @@ pip install torch-geometric
 Then you may install other dependencies like: matplotlib, yaml, pickle, etc.
 
 ## Dataset
-Unzip the dataset.tar.gz. "processed" folder contains 10K preprocessed graph-represented city blocks. You may read them by "networkx.read_gpickle()". "raw_geo" contains 10K corresponding original building and block polygons (shapely.polygon format) of each city block (coordinates in UTM Zone projection). You may read it by "pickle.load()". Those original building polygons are directly acquired by "osmnx.geometries module" from [osmnx](https://osmnx.readthedocs.io/en/stable/user-reference.html). Our canonical spatial transformation converts the original building polygons to the canonical version. After simple normalization by mean substraction and std dividing, coordinates and location information are encoded as node attributes in 2D grid graphs, then saved in "processed". Since the raw dataset is public accessible, we encourage users to implement their own preprocessing of original building polygons. It may facilitate better performance.
+Unzip the dataset.tar.gz. "processed" folder contains 10K preprocessed graph-represented city blocks. You may read them by "networkx.read_gpickle()". "raw_geo" contains 10K corresponding original building and block polygons (shapely.polygon format) of each city block (coordinates in UTM Zone projection). You may read it by "pickle.load()". Those original building polygons are directly acquired by "osmnx.geometries module" from [osmnx](https://osmnx.readthedocs.io/en/stable/user-reference.html).
+
+Our canonical spatial transformation converts the original building polygons to the canonical version. After simple normalization by mean substraction and std dividing, coordinates and location information are encoded as node attributes in 2D grid graphs, then saved in "processed". Since the raw dataset is public accessible, we encourage users to implement their own preprocessing of original building polygons. It may facilitate better performance.
 
 
 ## How to train your model
