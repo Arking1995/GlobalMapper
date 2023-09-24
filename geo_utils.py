@@ -7,60 +7,6 @@ import copy
 from sklearn.neighbors import NearestNeighbors
 
 
-
-class CityBlock_feature:
-    def __init__(self, idx, graph, midaxis, block, z_sample, blockscale):
-        self.graph = graph
-        self.midaxis = midaxis
-        self.block = block
-        self.id = idx
-        self.z_sample = z_sample
-        self.blockscale = blockscale
-        self.get_feature()
-    
-
-    def get_feature(self):
-        vec_out = graph_to_vector(self.graph)
-        exist_mask = vec_out['n_exist'] > 0
-        exist = vec_out['n_exist']
-        pred_size = vec_out['n_size'][exist_mask]
-        pred_pos = vec_out['n_pos'][exist_mask]            
-        self.pred_shape_type = vec_out['n_shape'][exist_mask]
-        self.pred_iou = vec_out['n_iou'][exist_mask]
-        self.bldgnum = exist.sum()
-
-        roww = [exist[:30].sum(), exist[30:60].sum(), exist[60:90].sum(), exist[90:].sum()]
-        roww = np.array(roww)
-        self.rownum = (roww > 0).sum()
-
-        block = copy.deepcopy(self.block)
-        block_azimuth, block_bbx = get_block_parameters(block)
-        block = norm_block_to_horizonal([block], block_azimuth, block)[0]
-        block = block.simplify(2.0)
-        asp_rto = get_block_aspect_ratio(block, self.midaxis)
-
-
-        pred_size[:, 0] = (pred_size[:, 0] + 0.252) / 2.0
-        pred_size[:, 1] = pred_size[:, 1] + 0.479
-
-        pred_pos_sort = np.lexsort((pred_pos[:,1],pred_pos[:,0]))
-        pred_pos_xsorted = pred_pos[pred_pos_sort]
-        pred_size_xsorted = pred_size[pred_pos_sort]
-        pred_bldg, pred_pos1, pred_size1 = inverse_warp_bldg_by_midaxis(pred_pos_xsorted, pred_size_xsorted, self.midaxis, asp_rto)
-        real_size = np.multiply(pred_size1[:,0], pred_size1[:,1])
-        self.mean_size = np.mean(real_size)
-        self.std_size = np.std(real_size) / (self.mean_size+1e-6)
-        if pred_pos1.shape[0]<2:
-            distances = [0.0]
-        else:    
-            nbrs = NearestNeighbors(n_neighbors=2, algorithm='ball_tree').fit(pred_pos1)
-            distances, indices = nbrs.kneighbors(pred_pos1)
-            distances = distances[:, 1]
-        self.mean_space = np.mean(distances)
-        self.std_space = np.std(distances) / (self.mean_space+ 1e-6)
-
-
-
 ##########################################################################
 def get_extend_line(a, b, block, isfront, is_extend_from_end = False):
     minx, miny, maxx, maxy = block.bounds

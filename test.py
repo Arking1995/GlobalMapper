@@ -3,20 +3,16 @@ from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 from urban_dataset import UrbanGraphDataset, graph_transform, get_transform, test_graph_transform
 from model import *
-# from model_channel import *
 import torch.nn.functional as F
-from torch.autograd import Variable
 import torch.nn as nn
 from torch_geometric.data import Batch
 import numpy as np
-import sys
 import random
 from torch.optim.lr_scheduler import MultiStepLR
 from time import gmtime, strftime
 import shutil
 from graph_util import *
 import shutil
-# from cnn_model import autoencoder
 from torchvision.utils import save_image
 
 
@@ -25,8 +21,8 @@ if __name__ == "__main__":
     random.seed(42) # make sure every time has the same training and validation sets
 
     pth_name =  'latest'  
-    epoch_name = 'test_epoch'
-    dataset_path = '/media/dummy1/he425/GlobalMapper_private/dataset_2d'
+    epoch_name = 'your_epoch_name'
+    dataset_path = 'your_dataset_folder'
     data_name = 'osm_cities'
 
     gpu_ids = 0

@@ -4,11 +4,9 @@ from torch_geometric.loader import DataLoader, DataListLoader
 from urban_dataset import UrbanGraphDataset, graph_transform, get_transform
 from model import *
 import torch.nn.functional as F
-from torch.autograd import Variable
 import torch.nn as nn
 from torch_geometric.data import Batch
 import numpy as np
-import sys
 import random
 from tensorboard_logger import configure, log_value
 from torch.optim.lr_scheduler import MultiStepLR
@@ -19,16 +17,17 @@ from graph_util import read_train_yaml
 from graph_trainer import train, validation
 import yaml
 import warnings
-import torch.distributed as dist
 warnings.filterwarnings("ignore")
 
 
 if __name__ == "__main__":
     random.seed(42) # make sure every time has the same training and validation sets
 
-    dataset_path = '/media/dummy1/he425/GlobalMapper_private/dataset_2d'
 
     root = os.getcwd()
+
+    dataset_path = os.path.join(root, 'dataset')  ### you may set up your own dataset
+
     train_opt = read_train_yaml(root, filename = "train_gnn.yaml")
     print(train_opt)
     is_resmue = train_opt['resume']
@@ -66,13 +65,9 @@ if __name__ == "__main__":
     loss_dict['ShapeCEloss'] = nn.CrossEntropyLoss(reduction='sum')
     loss_dict['Iouloss'] = nn.MSELoss(reduction='sum')
     loss_dict['ExistBCEloss'] = nn.BCEWithLogitsLoss(reduction='sum')
-    loss_dict['MergeBCEloss'] = nn.BCEWithLogitsLoss(reduction='sum')
     loss_dict['CELoss'] = nn.CrossEntropyLoss(reduction='none')
     loss_dict['Sizeloss'] = nn.MSELoss(reduction='sum')  # nn.SmoothL1Loss
     loss_dict['ExtSumloss'] = nn.MSELoss(reduction='sum')  # nn.SmoothL1Loss
-    loss_dict['Graphsizeloss'] = nn.MSELoss(reduction='sum')
-    loss_dict['Blockscaleloss'] = nn.MSELoss(reduction='sum')
-    loss_dict['Blockshapeloss'] = nn.MSELoss(reduction='sum')
 
 
     save_pth = os.path.join(root,'epoch')
