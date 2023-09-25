@@ -20,7 +20,7 @@ pip install torch-geometric
 Then you may install other dependencies like: matplotlib, yaml, pickle, etc.
 
 ## Dataset
-Unzip the "dataset.tar.gz" 
+We provide a 10K dataset sample in the repo. You may directly unzip it ("dataset.tar.gz"). The 120K dataset is provided [here](https://purdue0-my.sharepoint.com/:u:/r/personal/he425_purdue_edu/Documents/github_globalmapper/globalmapper.tar.gz?csf=1&web=1&e=6qtZLL)
 
 "processed" folder contains 10K preprocessed graph-represented city blocks. You may read them by "networkx.read_gpickle()". "raw_geo" contains 10K corresponding original building and block polygons (shapely.polygon format) of each city block (coordinates in UTM Zone projection). You may read it by "pickle.load()". Those original building polygons are directly acquired by "osmnx.geometries module" from [osmnx](https://osmnx.readthedocs.io/en/stable/user-reference.html).
 
