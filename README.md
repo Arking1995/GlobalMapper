@@ -1,4 +1,4 @@
-# GlobalMapper
+# GlobalMapper: Arbitrary-Shaped Urban Layout Generation
 Official Pytorch Implementation of "GlobalMapper: Arbitrary-Shaped Urban Layout Generation"
 
 [arXiv](https://arxiv.org/abs/2307.09693) | [BibTeX](#bibtex) | [Project Page](https://arking1995.github.io/GlobalMapper/)
