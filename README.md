@@ -47,11 +47,13 @@ python test.py
 
 If you use this code, please cite
 ```text
-@inproceedings{he2023globalmapper,
-  title={GlobalMapper: Arbitrary-Shaped Urban Layout Generation},
-  author={He, Liu and Aliaga, Daniel},
-  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
-  year={2023}
+@InProceedings{He_2023_ICCV,
+    author    = {He, Liu and Aliaga, Daniel},
+    title     = {GlobalMapper: Arbitrary-Shaped Urban Layout Generation},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {454-464}
 }
 ```
 
