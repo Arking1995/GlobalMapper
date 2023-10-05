@@ -153,15 +153,13 @@ def test_graph_transform(data):
     org_node_size = data.node_size
     org_node_size = torch.tensor(org_node_size, dtype=torch.float32)
 
-    # node_size = spa_enc(np.expand_dims(org_node_size, axis=0))
     node_size = np.expand_dims(org_node_size, axis=0)
     node_size = node_size.squeeze(0)
 
     org_node_pos = data.node_pos
     org_node_pos = torch.tensor(org_node_pos, dtype=torch.float32)
 
-    # node_pos = spa_enc(np.expand_dims(org_node_pos, axis=0))
-    node_size = np.expand_dims(org_node_pos, axis=0)
+    node_pos = np.expand_dims(org_node_pos, axis=0)
     node_pos = node_pos.squeeze(0)
 
     b_shape_gt = torch.tensor(data.b_shape, dtype=torch.int64)
@@ -173,7 +171,6 @@ def test_graph_transform(data):
     edge_idx = torch.tensor(edge_idx, dtype=torch.long)
     
     node_idx = torch.tensor(data.node_idx, dtype=torch.float32)
-    # node_idx = idx_enc(np.expand_dims(data.node_idx, axis=0))
     node_idx = np.expand_dims(data.node_idx, axis=0)
     node_idx = node_idx.squeeze(0)
 
