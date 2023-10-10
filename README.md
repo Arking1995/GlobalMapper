@@ -42,6 +42,13 @@ After you setup desired "dataset_path" and "epoch_name". Simply run
 python test.py
 ```
 
+## How to do canonical spatial transformation
+We provide a simple example in "example_canonical_transform.py". Details are provieded in our Supplemental [Supp](https://openaccess.thecvf.com/content/ICCV2023/supplemental/He_GlobalMapper_Arbitrary-Shaped_Urban_ICCV_2023_supplemental.pdf). We encourage users to commit their own realization.
+
+
+## How to do visualization
+All maps in the paper are visualized by simple matplotlib draw functions that you may compose in minutes.
+
 
 ## BibTeX
 
